@@ -1,0 +1,19 @@
+@use 'src/styles/vars';
+
+.header {
+   /* On utilise nos variables pour appliquer nos styles : vars.$mainColor */
+  background-color: vars.$mainColor;
+  color: vars.$lightColor;
+  padding: 2 * vars.$gutter;
+
+  
+  /* le caractère & permet de faire référence au parent */
+  &-title {
+    font-weight: vars.$fwBold;
+    font-size: 2em;
+  }
+
+  &-amount {
+    margin-top: vars.$gutter;
+  }
+}
