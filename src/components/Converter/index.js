@@ -1,6 +1,7 @@
 // == Import
 // == Composant
 import Header from '../Header';
+import Currencies from '../Currencies';
 // Style
 import './styles.scss';
 
@@ -9,7 +10,7 @@ function Converter() {
   return (
     <div className="converter">
       <Header />
-      <div>Currencies</div>
+      <Currencies />
       <div>Amount</div>
     </div>
   );
