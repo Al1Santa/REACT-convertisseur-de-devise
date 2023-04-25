@@ -6,16 +6,10 @@
   overflow-y: auto;
   background-color: vars.$lightColor;
 
-  &-search {
+  &-title {
+    font-weight: vars.$fwBold;
     padding: vars.$gutter;
-    border: none;
-    width: 100%;
-    color: vars.$mainColor;
-    font-size: 1.2em;
-
-    &::placeholder {
-      color: vars.$altColor;
-    }
+    margin-top: vars.$gutter;
   }
 
   // Transition CSS :

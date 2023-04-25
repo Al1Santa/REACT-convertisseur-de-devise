@@ -1,4 +1,6 @@
 // == Import
+import Currency from './currency';
+// == Style
 import './currencies.scss';
 // == Composant
 function Currencies() {
@@ -6,9 +8,7 @@ function Currencies() {
     <div className="currencies">
       <p className="currencies-title">Currencies</p>
       <ul>
-        <li className="currency">USD</li>
-        <li className="currency">EURO</li>
-        <li className="currency">YEN</li>
+        <Currency />
       </ul>
     </div>
   );
