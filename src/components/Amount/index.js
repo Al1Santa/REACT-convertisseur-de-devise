@@ -1,13 +1,22 @@
+// == Import :  npm
+import PropTypes from 'prop-types';
+
 // == Import
 import './amount.scss';
 // == Composant
-function Amount() {
+function Amount({ currency, value }) {
   return (
     <div className="amount">
-      <p className="amount-value">1.09</p>
-      <p className="amount-currency">United State Dollars</p>
+      <p className="amount-value">{value}</p>
+      <p className="amount-currency">{currency}</p>
     </div>
   );
 }
+
+Amount.propTypes = {
+  currency: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
+};
+
 // == Export
 export default Amount;
