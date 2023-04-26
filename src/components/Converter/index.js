@@ -9,6 +9,7 @@ import currenciesList from 'src/data/currencies';
 import Header from '../Header';
 import Currencies from '../Currencies';
 import Amount from '../Amount';
+import Toogle from '../Toggle';
 // Style
 import './styles.scss';
 
@@ -27,19 +28,24 @@ class Converter extends React.Component {
   }
 
   handleClick() {
+    const { isOpen } = this.state;
+
     this.setState({
-      isOpen: true,
+      isOpen: !isOpen,
     });
   }
 
   render() {
+    // Eslint nous dit qu'il faut faire du destructuring pour utilisé une propriété du state
+    const { isOpen } = this.state;
+
     return (
-    <div className="converter">
-      <Header baseAmount={1} />
-      <button type="button" onClick={this.handleClick}>Afficher / Cacher les devises </button>
-      {this.state.isOpen && <Currencies currencies={currenciesList} />}
-      <Amount currency="United States Dollar" value={1.09} />
-    </div>
+      <div className="converter">
+        <Header baseAmount={1} />
+        <Toogle open={isOpen} />
+        {isOpen && <Currencies currencies={currenciesList} />}
+        <Amount currency="United States Dollar" value={1.09} />
+      </div>
     );
 }
 }
