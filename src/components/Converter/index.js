@@ -39,10 +39,12 @@ class Converter extends React.Component {
     // Eslint nous dit qu'il faut faire du destructuring pour utilisé une propriété du state
     const { isOpen } = this.state;
 
+    //  On envoie la fonction handleClick en prop à notre composant toggle
+    // car c'est sur ce composant qu'il est exécuté
     return (
       <div className="converter">
         <Header baseAmount={1} />
-        <Toogle open={isOpen} />
+        <Toogle open={isOpen} manageClick={this.handleClick} />
         {isOpen && <Currencies currencies={currenciesList} />}
         <Amount currency="United States Dollar" value={1.09} />
       </div>

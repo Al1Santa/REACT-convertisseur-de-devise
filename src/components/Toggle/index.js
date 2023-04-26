@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './toggle.scss';
 
 // == Composant
-function Toogle({ open }) {
+function Toogle({ open, manageClick }) {
   // open ? cssClass = 'toggle toggle--open' : cssClass = 'toogle';
   let cssClass;
   if (open) {
@@ -18,7 +18,7 @@ function Toogle({ open }) {
     <button
       className={cssClass}
       type="button"
-      // onClick={this.handleClick}
+      onClick={manageClick}
     >
       =
     </button>
@@ -26,6 +26,7 @@ function Toogle({ open }) {
 }
 Toogle.propTypes = {
   open: PropTypes.bool.isRequired,
+  manageClick: PropTypes.func.isRequired,
 };
 // == Export
 export default Toogle;
