@@ -1,4 +1,4 @@
-// == Import :npm 
+// == Import :npm
 import PropTypes from 'prop-types';
 
 // == Import
@@ -6,30 +6,35 @@ import Currency from './currency';
 // == Style
 import './currencies.scss';
 // == Composant
-function Currencies({ currencies }) {
+function Currencies({ currencies, handleClick }) {
   return (
     <div className="currencies">
-      <p className="currencies-title">Currencies</p>
+      <input
+        type="text"
+        className="currencies-search"
+        placeholder="Rechercher"
+      />
       <ul>
         {currencies.map((currency) => (
           // {...currency} : Spread Opérator
           // => Permet de dévérser le contenu de la variable dans le composant
           // Revient à écrire
           // <Currency name={currency.name} rate={currency.rate} />
-          <Currency {...currency} key={currency.name} />
+          <Currency {...currency} click={handleClick} key={currency.name} />
         ))}
       </ul>
     </div>
   );
 }
-
-Currencies.prototype = {
+//  40 minutes ep 2
+Currencies.propTypes = {
   currencies: PropTypes.arrayOf(
     PropTypes.shape({
       // on ne valide que les données que l'on utilise
       name: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  handleClick: PropTypes.func.isRequired,
 };
 // == Export
 export default Currencies;
