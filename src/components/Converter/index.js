@@ -69,6 +69,22 @@ class Converter extends React.Component {
     return formattedResult;
   }
 
+  getFilteredCurrencies() {
+    const { search } = this.state;
+    let filteredCurrencies = currenciesList;
+
+    if (search.length > 0) {
+      filteredCurrencies = currenciesList.filter((item) => {
+        const nameLowerCase = item.name.toLowerCase();
+        const inputSearchLowerCase = search.toLowerCase();
+
+        return nameLowerCase.includes(inputSearchLowerCase);
+      });
+    }
+
+    return filteredCurrencies;
+  }
+
   render() {
     // Eslint nous dit qu'il faut faire du destructuring pour utilisé une propriété du state
     const {
@@ -81,6 +97,9 @@ class Converter extends React.Component {
     // On recup le resultat de conversion
     // Pour l'envoyer au composant qui doit l'afficher
     const result = this.makeConversion();
+
+    const filteredCurrencies = this.getFilteredCurrencies();
+
     //  On envoie la fonction handleClick en prop à notre composant toggle
     // car c'est sur ce composant qu'il est exécuté
     return (
@@ -89,7 +108,7 @@ class Converter extends React.Component {
         <Toogle open={isOpen} manageClick={this.handleClick} />
         {isOpen && (
           <Currencies
-            currencies={currenciesList}
+            currencies={filteredCurrencies}
             handleClick={this.handleCurrencyClick}
             searchValue={search}
             setSearch={this.handlerChangeSearch}
