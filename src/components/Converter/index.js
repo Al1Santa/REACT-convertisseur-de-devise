@@ -52,6 +52,22 @@ class Converter extends React.Component {
     });
   }
 
+  getFilteredCurrencies() {
+    const { search } = this.state;
+    let filteredCurrencies = currenciesList;
+
+    if (search.length > 0) {
+      filteredCurrencies = currenciesList.filter((item) => {
+        const nameLowerCase = item.name.toLowerCase();
+        const inputSearchLowerCase = search.toLowerCase();
+
+        return nameLowerCase.includes(inputSearchLowerCase);
+      });
+    }
+
+    return filteredCurrencies;
+  }
+
   // Fonction qui retourne le resultat de conversion
   makeConversion() {
     // On recup les données depuis notre state
@@ -67,22 +83,6 @@ class Converter extends React.Component {
     const formattedResult = Math.round(result * 100) / 100;
 
     return formattedResult;
-  }
-
-  getFilteredCurrencies() {
-    const { search } = this.state;
-    let filteredCurrencies = currenciesList;
-
-    if (search.length > 0) {
-      filteredCurrencies = currenciesList.filter((item) => {
-        const nameLowerCase = item.name.toLowerCase();
-        const inputSearchLowerCase = search.toLowerCase();
-
-        return nameLowerCase.includes(inputSearchLowerCase);
-      });
-    }
-
-    return filteredCurrencies;
   }
 
   render() {
