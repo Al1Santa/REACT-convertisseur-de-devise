@@ -20,7 +20,7 @@ function Currencies({
         placeholder="Rechercher"
         value={searchValue}
         onChange={(event) => {
-          console.log(`onChange : ${event.currentTarget.value}`);
+          // console.log(`onChange : ${event.currentTarget.value}`);
           setSearch(event.currentTarget.value);
         }}
       />

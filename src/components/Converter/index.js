@@ -32,6 +32,27 @@ class Converter extends React.Component {
     };
   }
 
+  // Attention, pour pouvoir utilisé ces fonctions dans un composant
+  // il faut que celui ci soit déclarer en classe
+  componentDidMount() {
+    const { currency } = this.state;
+    document.title = currency;
+
+    //  si on appui sur la touche echap, on cache la liste
+    document.addEventListener('keyup', (evt) => {
+      if (evt.key === 'Escape') {
+        this.setState({
+          isOpen: false,
+        });
+      }
+    });
+  }
+
+  componentDidUpdate() {
+    const { currency } = this.state;
+    document.title = currency;
+  }
+
   handleClick() {
     const { isOpen } = this.state;
 
