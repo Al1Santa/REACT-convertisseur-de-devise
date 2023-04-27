@@ -23,10 +23,12 @@ class Converter extends React.Component {
     super(props);
     this.handleClick = this.handleClick.bind(this);
     this.handleCurrencyClick = this.handleCurrencyClick.bind(this);
+    this.handlerChangeSearch = this.handlerChangeSearch.bind(this);
     this.state = {
       isOpen: false,
       baseAmount: 1,
       currency: 'United States Dollar',
+      search:'',
     };
   }
 
@@ -41,6 +43,12 @@ class Converter extends React.Component {
   handleCurrencyClick(name) {
     this.setState({
       currency: name,
+    });
+  }
+
+  handlerChangeSearch(value) {
+    this.setState({
+      search: value,
     });
   }
 
@@ -63,7 +71,12 @@ class Converter extends React.Component {
 
   render() {
     // Eslint nous dit qu'il faut faire du destructuring pour utilisé une propriété du state
-    const { isOpen, baseAmount, currency } = this.state;
+    const {
+      isOpen,
+      baseAmount,
+      currency,
+      search,
+    } = this.state;
 
     // On recup le resultat de conversion
     // Pour l'envoyer au composant qui doit l'afficher
@@ -78,6 +91,8 @@ class Converter extends React.Component {
           <Currencies
             currencies={currenciesList}
             handleClick={this.handleCurrencyClick}
+            searchValue={search}
+            setSearch={this.handlerChangeSearch}
           />
         )}
         <Amount currency={currency} value={result} />

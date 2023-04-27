@@ -6,13 +6,23 @@ import Currency from './currency';
 // == Style
 import './currencies.scss';
 // == Composant
-function Currencies({ currencies, handleClick }) {
+function Currencies({
+  currencies,
+  handleClick,
+  searchValue,
+  setSearch
+}) {
   return (
     <div className="currencies">
       <input
         type="text"
         className="currencies-search"
         placeholder="Rechercher"
+        value={searchValue}
+        onChange={(event) => {
+          console.log(`onChange : ${event.currentTarget.value}`);
+          setSearch(event.currentTarget.value);
+        }}
       />
       <ul>
         {currencies.map((currency) => (
@@ -35,6 +45,8 @@ Currencies.propTypes = {
     }).isRequired,
   ).isRequired,
   handleClick: PropTypes.func.isRequired,
+  searchValue: PropTypes.string.isRequired,
+  setSearch: PropTypes.func.isRequired,
 };
 // == Export
 export default Currencies;
